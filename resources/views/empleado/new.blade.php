@@ -16,10 +16,10 @@
         <form method="POST" action="{{ route("empleados.store") }}">
             @csrf
             <div class="mb-3">
-              <label for="id" class="form-label">Code</label>
-              <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id"
+              <label for="codigo" class="form-label">Code</label>
+              <input type="text" class="form-control" id="id" aria-describedby="codigoHelp" name="id"
               disabled="disabled">
-              <div id="idHelp" class="form-text">Empleado Code</div>
+              <div id="codigoHelp" class="form-text">Empleado Code</div>
             </div>
     
             <div class="mb-3">

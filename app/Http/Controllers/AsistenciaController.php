@@ -77,9 +77,23 @@ class AsistenciaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $asistencia = Asistencia::find($id);
+        
+        $asistencia->fecha = $request->fecha;
+        $asistencia->hora_entrada = $request->hora_entrada;
+        $asistencia->hora_salida = $request->hora_salida;
+        $asistencia->empleado_id = $request->code;
+        $asistencia->save();
+
+        $asistencias = DB::table('asistencias')
+        ->join('empleados', 'asistencias.empleado_id', '=' , 'empleados.id')
+        ->select('asistencias.*', 'empleados.emp_nomb')
+        ->get();
+
+        return view ('asistencia.index' , ['asistencias' => $asistencias]);
     }
 
     /**

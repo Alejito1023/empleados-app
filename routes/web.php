@@ -20,3 +20,4 @@ Route::get('/asistencias', [AsistenciaController::class,'index'])->name('asisten
 Route::post('/asistencias', [AsistenciaController::class,'store'])->name('asistencias.store');
 Route::get('/asistencias/create', [AsistenciaController::class,'create'])->name('asistencias.create');
 Route::delete('/asistencias/{asistencia}', [AsistenciaController::class,'destroy'])->name('asistencias.destroy');
+Route::put('/asistencias/{asistencia}', [AsistenciaController::class,'update'])->name('asistencias.update');
