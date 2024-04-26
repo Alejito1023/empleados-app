@@ -71,6 +71,13 @@ class DepartamentoController extends Controller
     public function edit(string $id)
     {
         //
+        $departamento = Departamento::find($id);
+        $empleados = DB::table('empleados')
+    
+        ->orderBy('emp_nomb')
+        ->get();
+
+        return view ('departamento.edit' , ['departamento' => $departamento,'empleados' => $empleados]);
     }
 
     /**

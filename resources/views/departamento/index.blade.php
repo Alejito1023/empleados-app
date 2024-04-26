@@ -30,6 +30,8 @@
             <td>{{ $departamento->dep_nomb }}</td>
             <td>{{ $departamento->emp_nomb }}</td>
             <td>
+                <a href=" {{ route("departamentos.edit" , ['departamento'=>$departamento->id]) }} " 
+                    class=" btn btn-info"> Edit </a></li>
                 <form action="{{ route('departamentos.destroy', ['departamento' =>$departamento->id]) }}"
                     method="POST" style="display: inline-back">
                     @method('delete')
