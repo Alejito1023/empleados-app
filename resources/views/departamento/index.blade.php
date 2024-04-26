@@ -29,7 +29,7 @@
             <th scope="row">{{ $departamento->id }}</th>
             <td>{{ $departamento->dep_nomb }}</td>
             <td>{{ $departamento->emp_nomb }}</td>
-            <td><span> Actions</span></td>
+            <td><span> Acciones </span></td>
           </tr>
           @endforeach
         </tbody>
