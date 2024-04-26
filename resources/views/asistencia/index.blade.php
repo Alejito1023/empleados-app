@@ -29,7 +29,7 @@
             <th scope="row">{{ $asistencia->id}}</th>
             <td>{{ $asistencia->nombre}}</td>
             <td>{{ $asistencia->emp_nomb}}</td>
-            <td><span> Actions </span></td>
+            <td><span> Acciones </span></td>
           </tr>
 
            @endforeach

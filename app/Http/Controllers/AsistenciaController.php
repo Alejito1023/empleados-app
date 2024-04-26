@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Asistencia;
+use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
 {
@@ -13,7 +14,11 @@ class AsistenciaController extends Controller
     public function index()
     {
         //
-        $asistencias= Asistencia::all();
+        //$asistencias= Asistencia::all();
+        $asistencias = DB::table('asistencias')
+        ->join('empleados', 'asistencias.empleado_id', '=', 'empleados.id')
+        ->select('asistencias.*', 'empleados.emp_nomb')
+        ->get();
         return view('asistencia.index', ['asistencias' =>$asistencias]);
     }
 
