@@ -30,7 +30,7 @@
             <th scope="row">{{$empleado->id}}</th>
             <td>{{$empleado->nombre}}</td>
             <td>{{$empleado->dep_nomb}}</td>
-            <td><span>Actions</span></td>
+            <td><span>Acciones</span></td>
           </tr>
           @endforeach
         </tbody>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Empleado;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -13,7 +12,12 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        //$empleados = Empleado::all();
+        $empleados = DB::table("empleado")
+        ->join("departamentos","empleados.departamento_id", "=" , "departamentos.departamento_id")
+        ->select("empleado.*", "departamentos.dep_nomb")
+        ->get();
+
         return view('empleado.index',['empleados'=>$empleados]);
     }
 
