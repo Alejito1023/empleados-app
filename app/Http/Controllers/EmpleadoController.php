@@ -43,7 +43,7 @@ class EmpleadoController extends Controller
         $empleado = new Empleado();
         // $empleado->comu_codi = $request->id;
         // El codigo de empleado es auto incremental
-        $empleado->nombre = $request->name;
+        $empleado->emp_nomb = $request->name;
         $empleado->departamento_id = $request->code;
         $empleado->save();
 

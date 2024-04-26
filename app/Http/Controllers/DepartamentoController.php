@@ -30,6 +30,11 @@ class DepartamentoController extends Controller
     public function create()
     {
         //
+        $empleados = DB::table('empleados')
+        ->orderBy('emp_nomb')
+        ->get();
+
+        return view ('departamento.new' , ['empleados' => $empleados]);
     }
 
     /**
@@ -38,6 +43,18 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         //
+        $departamento = new Departamento();
+        
+        $departamento->dep_nomb = $request->name;
+        $departamento->empleado_id = $request->code;
+        $departamento->save();
+
+        $departamentos = DB::table('departamentos')
+        ->join('empleados', 'departamentos.empleado_id', '=' , 'empleados.id')
+        ->select('departamentos.*', 'empleados.emp_nomb')
+        ->get();
+
+        return view ('departamento.index' , ['departamentos' => $departamentos]);
     }
 
     /**
