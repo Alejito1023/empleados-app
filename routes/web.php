@@ -11,3 +11,4 @@ Route::get('/empleados', [EmpleadoController::class,'index'])->name('empleados.i
 Route::post('/empleados', [EmpleadoController::class,'store'])->name('empleados.store');
 Route::get('/empleados/create', [EmpleadoController::class,'create'])->name('empleados.create');
 Route::delete('/empleados/{empleado}', [EmpleadoController::class,'destroy'])->name('empleados.destroy');
+Route::put('/empleados/{empleado}', [EmpleadoController::class,'update'])->name('empleados.update');

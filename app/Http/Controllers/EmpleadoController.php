@@ -74,9 +74,22 @@ class EmpleadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        $empleado = Empleado::find($id);
+        // $empleado->comu_codi = $request->id;
+        // El codigo de empleado es auto incremental
+        $empleado->nombre = $request->name;
+        $empleado->departamento_id = $request->code;
+        $empleado->save();
+
+        $empleados = DB::table('empleados')
+        ->join('departamentos', 'empleados.departamento_id', '=' , 'departamentos.id')
+        ->select('empleados.*', 'departamentos.dep_nomb')
+        ->get();
+
+        return view ('empleado.index' , ['empleados' => $empleados]);
     }
 
     /**
