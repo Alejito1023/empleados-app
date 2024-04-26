@@ -31,6 +31,8 @@
             <td>{{$empleado->nombre}}</td>
             <td>{{$empleado->dep_nomb}}</td>
             <td>
+                <a href=" {{ route("empleados.edit" , ['empleado'=>$empleado->id]) }} " 
+                    class=" btn btn-info"> Edit </a></li>
                 <form action="{{ route('empleados.destroy', ['empleado' =>$empleado->id]) }}"
                     method="POST" style="display: inline-back">
                     @method('delete')

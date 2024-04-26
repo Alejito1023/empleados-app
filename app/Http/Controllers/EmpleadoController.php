@@ -66,9 +66,17 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
+        $empleado = Empleado::find($id);
+        $departamentos = DB::table('departamentos')
+    
+        ->orderBy('dep_nomb')
+        ->get();
+
+        return view ('empleado.edit' , ['empleado' => $empleado,'departamentos' => $departamentos]);
+
     }
 
     /**
