@@ -21,3 +21,4 @@ Route::post('/asistencias', [AsistenciaController::class,'store'])->name('asiste
 Route::get('/asistencias/create', [AsistenciaController::class,'create'])->name('asistencias.create');
 Route::delete('/asistencias/{asistencia}', [AsistenciaController::class,'destroy'])->name('asistencias.destroy');
 Route::put('/asistencias/{asistencia}', [AsistenciaController::class,'update'])->name('asistencias.update');
+Route::get('/asistencias/{asistencia}/edit', [AsistenciaController::class,'edit'])->name('asistencias.edit');

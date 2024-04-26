@@ -69,9 +69,16 @@ class AsistenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         //
+        $asistencia = Asistencia::find($id);
+        $empleados = DB::table('empleados')
+    
+        ->orderBy('emp_nomb')
+        ->get();
+
+        return view ('asistencia.edit' , ['asistencia' => $asistencia,'empleados' => $empleados]);
     }
 
     /**

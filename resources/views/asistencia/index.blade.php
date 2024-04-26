@@ -31,6 +31,8 @@
             <td>{{ $asistencia->fecha}}</td>
             <td>{{ $asistencia->emp_nomb}}</td>
             <td>
+                <a href=" {{ route("asistencias.edit" , ['asistencia'=>$asistencia->id]) }} " 
+                    class=" btn btn-info"> Edit </a></li>
                 <form action="{{ route('asistencias.destroy', ['asistencia' =>$asistencia->id]) }}"
                     method="POST" style="display: inline-back">
                     @method('delete')
