@@ -13,9 +13,9 @@ class EmpleadoController extends Controller
     public function index()
     {
         //$empleados = Empleado::all();
-        $empleados = DB::table("empleado")
-        ->join("departamentos","empleados.departamento_id", "=" , "departamentos.departamento_id")
-        ->select("empleado.*", "departamentos.dep_nomb")
+        $empleados = DB::table("empleados")
+        ->join("departamentos","empleados.departamento_id", "=" , "departamentos.id")
+        ->select("empleados.*", "departamentos.dep_nomb")
         ->get();
 
         return view('empleado.index',['empleados'=>$empleados]);
@@ -27,6 +27,11 @@ class EmpleadoController extends Controller
     public function create()
     {
         //
+        $departamentos = DB::table('departamentos')
+        ->orderBy('dep_nomb')
+        ->get();
+
+        return view ('empleado.new' , ['departamentos' => $departamentos]);
     }
 
     /**
@@ -35,6 +40,19 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         //
+        $empleado = new Empleado();
+        // $empleado->comu_codi = $request->id;
+        // El codigo de empleado es auto incremental
+        $empleado->nombre = $request->name;
+        $empleado->departamento_id = $request->code;
+        $empleado->save();
+
+        $empleados = DB::table('empleados')
+        ->join('departamentos', 'empleados.departamento_id', '=' , 'departamentos.departamento_id')
+        ->select('empleados.*', 'departamentos.dep_nomb')
+        ->get();
+
+        return view ('empleado.index' , ['empleados' => $empleados]);
     }
 
     /**
