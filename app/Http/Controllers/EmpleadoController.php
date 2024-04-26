@@ -48,7 +48,7 @@ class EmpleadoController extends Controller
         $empleado->save();
 
         $empleados = DB::table('empleados')
-        ->join('departamentos', 'empleados.departamento_id', '=' , 'departamentos.departamento_id')
+        ->join('departamentos', 'empleados.departamento_id', '=' , 'departamentos.id')
         ->select('empleados.*', 'departamentos.dep_nomb')
         ->get();
 
@@ -85,5 +85,14 @@ class EmpleadoController extends Controller
     public function destroy(string $id)
     {
         //
+        $empleado = Empleado::find($id);
+        $empleado->delete();
+
+        $empleados = DB::table('empleados')
+        ->join('departamentos', 'empleados.departamento_id', '=' , 'departamentos.id')
+        ->select('empleados.*', 'departamentos.dep_nomb')
+        ->get();
+
+        return view ('empleado.index' , ['empleados' => $empleados]);
     }
 }
