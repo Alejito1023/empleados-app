@@ -18,4 +18,5 @@ Route::get('/empleados/{empleado}/edit', [EmpleadoController::class,'edit'])->na
 
 Route::get('/asistencias', [AsistenciaController::class,'index'])->name('asistencias.index');
 Route::post('/asistencias', [AsistenciaController::class,'store'])->name('asistencias.store');
-Route::post('/asistencias/create', [AsistenciaController::class,'create'])->name('asistencias.create');
+Route::get('/asistencias/create', [AsistenciaController::class,'create'])->name('asistencias.create');
+Route::delete('/asistencias/{asistencia}', [AsistenciaController::class,'destroy'])->name('asistencias.destroy');

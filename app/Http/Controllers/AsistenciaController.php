@@ -32,7 +32,7 @@ class AsistenciaController extends Controller
         ->orderBy('emp_nomb')
         ->get();
 
-        return view ('asistencia.new' , ['asistencias' => $empleados]);
+        return view ('asistencia.new' , ['empleados' => $empleados]);
 
     }
 
@@ -85,8 +85,18 @@ class AsistenciaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
         //
+        $asistencia = Asistencia::find($id);
+        $asistencia->delete();
+
+        $asistencias = DB::table('asistencias')
+        ->join('empleados', 'asistencias.empleado_id', '=' , 'empleados.id')
+        ->select('asistencias.*', 'empleados.emp_nomb')
+        ->get();
+
+        return view ('asistencia.index' , ['asistencias' => $asistencias]);
+
     }
 }

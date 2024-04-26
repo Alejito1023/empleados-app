@@ -28,9 +28,16 @@
                 
           <tr>
             <th scope="row">{{ $asistencia->id}}</th>
-            <td>{{ $asistencia->nombre}}</td>
+            <td>{{ $asistencia->fecha}}</td>
             <td>{{ $asistencia->emp_nomb}}</td>
-            <td><span> Acciones </span></td>
+            <td>
+                <form action="{{ route('asistencias.destroy', ['asistencia' =>$asistencia->id]) }}"
+                    method="POST" style="display: inline-back">
+                    @method('delete')
+                    @csrf
+                   <input class="btn btn-danger" type="submit" value="delete">
+                </form>
+            </td>
           </tr>
 
            @endforeach
