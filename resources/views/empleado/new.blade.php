@@ -31,7 +31,7 @@
             <label for="departamento">Departamento:</label>
             <select class="form-select"  id="departamento" name="code" required>
                 <option selected disabled value="">Choose one...</option>
-                @foreach ($departamentos as $departamentos)
+                @foreach ($departamentos as $departamento)
                 <option value="{{$departamento->id}}">{{$departamento->dep_nomb}}</option>
                 @endforeach
             </select>
