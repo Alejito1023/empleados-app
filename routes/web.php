@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\EmpleadoController;
+use App\Models\Asistencia;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,3 +17,5 @@ Route::put('/empleados/{empleado}', [EmpleadoController::class,'update'])->name(
 Route::get('/empleados/{empleado}/edit', [EmpleadoController::class,'edit'])->name('empleados.edit');
 
 Route::get('/asistencias', [AsistenciaController::class,'index'])->name('asistencias.index');
+Route::post('/asistencias', [AsistenciaController::class,'store'])->name('asistencias.store');
+Route::post('/asistencias/create', [AsistenciaController::class,'create'])->name('asistencias.create');

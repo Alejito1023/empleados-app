@@ -8,36 +8,41 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Listado de Asistencia</title>
+    <title>Add Asistencia</title>
   </head>
+
   <body>
     <div class="container">
-    <h1>Listado de Asistencia</h1>
-    <a href="{{ route('asistencias.create')}}" class="btn btn-success"> Add </a>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Codigo</th>
-            <th scope="col">Asistencia</th>
-            <th scope="col">Empleado</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($asistencias as $asistencia)
-                
-          <tr>
-            <th scope="row">{{ $asistencia->id}}</th>
-            <td>{{ $asistencia->nombre}}</td>
-            <td>{{ $asistencia->emp_nomb}}</td>
-            <td><span> Acciones </span></td>
-          </tr>
+    <h1>Add Asistencia</h1>
+    <form method="POST" action="{{ route("asistencias.store") }}">
+        @csrf
+        <div class="mb-3">
+          <label for="id" class="form-label">Code</label>
+          <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id"
+          disabled="disabled">
+          <div id="idHelp" class="form-text">Asistencia Code</div>
+        </div>
 
-           @endforeach
-        </tbody>
-      </table>
+        <div class="mb-3">
+          <label for="name" class="form-label">Asistencia</label>
+          <input type="text" required class="form-control" id="name" aria-describedby="nameHelp"
+             name="name" placeholder="asistencia name.">
+        </div>
+
+        <label for="empleado">Empleado:</label>
+        <select class="form-select"  id="empleado" name="code" required>
+            <option selected disabled value="">Choose one...</option>
+            @foreach ($empleados as $empleado)
+            <option value="{{$empleado->id}}">{{$empleado->emp_nomb}}</option>
+            @endforeach
+        </select>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{ route('asistencias.index') }}" class="btn btn-warning">Cancel</a>
+        </div>
+      </form>
+
     </div>
-
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

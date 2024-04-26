@@ -28,6 +28,12 @@ class AsistenciaController extends Controller
     public function create()
     {
         //
+        $empleados = DB::table('empleados')
+        ->orderBy('emp_nomb')
+        ->get();
+
+        return view ('asistencia.new' , ['asistencias' => $empleados]);
+
     }
 
     /**
@@ -36,6 +42,20 @@ class AsistenciaController extends Controller
     public function store(Request $request)
     {
         //
+        $asistencia = new Asistencia();
+        
+        $asistencia->fecha = $request->fecha;
+        $asistencia->hora_entrada = $request->hora_entrada;
+        $asistencia->hora_salida = $request->hora_salida;
+        $asistencia->empleado_id = $request->code;
+        $asistencia->save();
+
+        $asistencias = DB::table('asistencias')
+        ->join('empleados', 'asistencias.empleado_id', '=' , 'empleados.id')
+        ->select('asistencias.*', 'empleados.emp_nomb')
+        ->get();
+
+        return view ('asistencia.index' , ['asistencias' => $asistencias]);
     }
 
     /**
