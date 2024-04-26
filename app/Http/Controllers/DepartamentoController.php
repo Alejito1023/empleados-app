@@ -76,9 +76,22 @@ class DepartamentoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
         //
+        $departamento = Departamento::find($id);
+
+        $departamento->dep_nomb = $request->name;
+        $departamento->empleado_id = $request->code;
+        $departamento->save();
+
+        $departamentos = DB::table('departamentos')
+        ->join('empleados', 'departamentos.empleado_id', '=' , 'empleados.id')
+        ->select('departamentos.*', 'empleados.emp_nomb')
+        ->get();
+
+        return view ('departamento.index' , ['departamentos' => $departamentos]);
+
     }
 
     /**
