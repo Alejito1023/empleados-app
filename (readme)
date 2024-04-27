@@ -1,0 +1,23 @@
+# EMPLEADOS-APP
+Desarrollaré una aplicación en Laravel que me permitirá gestionar toda la información relevante de mis empleados,
+así como la de los diferentes departamentos y los registros de asistencia. Con esta app, podré realizar fácilmente
+operaciones CRUD sobre estas entidades, lo que simplificará enormemente la administración de mi equipo y el seguimiento de su rendimiento laboral.
+### Requisitos previos
+composer --version
+laravel --version 
+### Paso 1: Clonar el repositorio
+git clone https://github.com/Alejito1023/empleados-app.git
+### Paso 2: Configuración
+Proporciona cualquier configuración adicional necesaria antes de ejecutar tu proyecto, como variables de entorno, archivos de configuración, etc.
+1.composer install
+2.composer update
+3.
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=empleado
+DB_USERNAME=root
+DB_PASSWORD=
+
+### Paso 3: Ejecutar el proyecto
+Php artisan migrate
