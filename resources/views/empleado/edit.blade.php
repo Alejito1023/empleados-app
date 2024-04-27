@@ -29,7 +29,34 @@
           <label for="name" class="form-label">Empleado</label>
           <input type="text" required class="form-control" id="name" aria-describedby="Empleado name"
              name="name" value="{{ $empleado->nombre }}">
+
         </div>
+
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" required class="form-control" id="apellido" aria-describedby="nameHelp"
+             name="apellido" placeholder="apellido name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="posicion" class="form-label">Posicion</label>
+          <input type="text" required class="form-control" id="posicion" aria-describedby="nameHelp"
+             name="posicion" placeholder="posicion name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha_contratacion" class="form-label">Fecha_contratacion</label>
+          <input type="date" required class="form-control" id="fecha_contratacion" aria-describedby="nameHelp"
+             name="fecha_contratacion" placeholder="fecha_contratacion name.">
+        </div>
+
+
+        <div class="mb-3">
+          <label for="salario" class="form-label">Salario</label>
+          <input type="text" required class="form-control" id="salario" aria-describedby="nameHelp"
+             name="salario" placeholder="salario name.">
+        </div>
+
 
         <label for="departamento">departamento:</label>
         <select class="form-select"  id="departamento" name="code" required>

@@ -16,7 +16,7 @@ class DepartamentoController extends Controller
         
         //$departamentos = Departamento::all();
         $departamentos = DB::table('departamentos')
-        ->join("empleados","departamentos.empleado_id", "=" , "empleados.id")
+        ->join("empleados","departamentos.id", "=" , "empleados.departamento_id")
         ->select("departamentos.*", "empleados.emp_nomb")
         ->get();
         return view('departamento.index', ['departamentos' => $departamentos]);
@@ -45,12 +45,14 @@ class DepartamentoController extends Controller
         //
         $departamento = new Departamento();
         
+        
         $departamento->dep_nomb = $request->name;
-        $departamento->empleado_id = $request->code;
+        $departamento->ubicacion = $request->ubicacion;
+        $departamento->numero_telefonico = $request->numero_telefonico;
         $departamento->save();
 
         $departamentos = DB::table('departamentos')
-        ->join('empleados', 'departamentos.empleado_id', '=' , 'empleados.id')
+        ->join('empleados', 'departamentos.id', '=' , 'empleados.departamento_id')
         ->select('departamentos.*', 'empleados.emp_nomb')
         ->get();
 
@@ -88,8 +90,10 @@ class DepartamentoController extends Controller
         //
         $departamento = Departamento::find($id);
 
+        $departamento->id = $request->code;
         $departamento->dep_nomb = $request->name;
-        $departamento->empleado_id = $request->code;
+        $departamento->ubicacion = $request->ubicacion;
+        $departamento->numero_telefonico = $request->numero_telefonico;
         $departamento->save();
 
         $departamentos = DB::table('departamentos')

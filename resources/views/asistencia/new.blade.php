@@ -24,10 +24,30 @@
         </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label">Asistencia</label>
-          <input type="text" required class="form-control" id="name" aria-describedby="nameHelp"
-             name="name" placeholder="asistencia name.">
+          <label for="empleado_id" class="form-label">Id Empleado:</label>
+          <input type="text" required class="form-control" id="empleado_id" aria-describedby="nameHelp"
+             name="empleado_id" placeholder="empleado_id name.">
         </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha:</label>
+          <input type="text" required class="form-control" id="fecha" aria-describedby="nameHelp"
+             name="fecha" placeholder="fecha name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="hora_entrada" class="form-label">Hora entrada:</label>
+          <input type="text" required class="form-control" id="hora_entrada" aria-describedby="nameHelp"
+             name="hora_entrada" placeholder="hora_entrada name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="hora_salida" class="form-label">Hora salida:</label>
+          <input type="text" required class="form-control" id="hora_salida" aria-describedby="nameHelp"
+             name="hora_salida" placeholder="hora_salida name.">
+        </div>
+
+        
 
         <label for="empleado">Empleado:</label>
         <select class="form-select"  id="empleado" name="code" required>

@@ -18,8 +18,10 @@
         <thead>
           <tr>
             <th scope="col">Codigo</th>
-            <th scope="col">Asistencia</th>
             <th scope="col">Empleado</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora Entrada</th>
+            <th scope="col">Hora Salida</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -28,8 +30,11 @@
                 
           <tr>
             <th scope="row">{{ $asistencia->id}}</th>
+            <td>{{ $asistencia->empleado_id}}</td>
             <td>{{ $asistencia->fecha}}</td>
-            <td>{{ $asistencia->emp_nomb}}</td>
+            <td>{{ $asistencia->hora_entrada}}</td>
+            <td>{{ $asistencia->hora_salida}}</td>
+
             <td>
                 <a href=" {{ route("asistencias.edit" , ['asistencia'=>$asistencia->id]) }} " 
                     class=" btn btn-info"> Edit </a></li>

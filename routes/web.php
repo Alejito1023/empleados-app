@@ -1,17 +1,28 @@
 <?php
 
-use App\Http\Controllers\AsistenciaController;
-use App\Http\Controllers\DepartamentoController;
-use App\Http\Controllers\EmpleadoController;
-use App\Models\Asistencia;
-use App\Models\Departamento;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\DepartamentoController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/empleados', [EmpleadoController::class,'index'])->name('empleados.index');
+    
 Route::get('/empleados', [EmpleadoController::class,'index'])->name('empleados.index');
+
 Route::post('/empleados', [EmpleadoController::class,'store'])->name('empleados.store');
 Route::get('/empleados/create', [EmpleadoController::class,'create'])->name('empleados.create');
 Route::delete('/empleados/{empleado}', [EmpleadoController::class,'destroy'])->name('empleados.destroy');
@@ -31,3 +42,8 @@ Route::get('/departamentos/create', [DepartamentoController::class,'create'])->n
 Route::delete('/departamentos/{departamento}', [DepartamentoController::class,'destroy'])->name('departamentos.destroy');
 Route::put('/departamentos/{departamento}', [DepartamentoController::class,'update'])->name('departamentos.update');
 Route::get('/departamentos/{departamento}/edit', [DepartamentoController::class,'edit'])->name('departamentos.edit');
+
+});
+
+
+require __DIR__.'/auth.php';

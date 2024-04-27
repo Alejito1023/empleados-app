@@ -44,10 +44,10 @@ class AsistenciaController extends Controller
         //
         $asistencia = new Asistencia();
         
+        $asistencia->empleado_id = $request->code;
         $asistencia->fecha = $request->fecha;
         $asistencia->hora_entrada = $request->hora_entrada;
         $asistencia->hora_salida = $request->hora_salida;
-        $asistencia->empleado_id = $request->code;
         $asistencia->save();
 
         $asistencias = DB::table('asistencias')
@@ -89,10 +89,11 @@ class AsistenciaController extends Controller
         //
         $asistencia = Asistencia::find($id);
         
+        $asistencia->empleado_id = $request->code;
         $asistencia->fecha = $request->fecha;
         $asistencia->hora_entrada = $request->hora_entrada;
         $asistencia->hora_salida = $request->hora_salida;
-        $asistencia->empleado_id = $request->code;
+        
         $asistencia->save();
 
         $asistencias = DB::table('asistencias')

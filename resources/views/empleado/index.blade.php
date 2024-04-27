@@ -18,7 +18,11 @@
           <tr>
             <th scope="col">Codigo</th>
             <th scope="col">Empleado</th>
-            <th scope="col">Departamento</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Posicion</th>
+            <th scope="col">Departamento_id</th>
+            <th scope="col">Fecha_contratacion</th>
+            <th scope="col">Salario</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -28,17 +32,25 @@
             
           <tr>
             <th scope="row">{{$empleado->id}}</th>
-            <td>{{$empleado->nombre}}</td>
-            <td>{{$empleado->dep_nomb}}</td>
+            <td>{{$empleado->emp_nomb}}</td>
+            <td>{{$empleado->apellido}}</td>
+            <td>{{$empleado->posicion}}</td>
+            <td>{{$empleado->departamento_id}}</td>
+            <td>{{$empleado->fecha_contratacion}}</td>
+            <td>{{$empleado->salario}}</td>
             <td>
+
                 <a href=" {{ route("empleados.edit" , ['empleado'=>$empleado->id]) }} " 
                     class=" btn btn-info"> Edit </a></li>
+
+
                 <form action="{{ route('empleados.destroy', ['empleado' =>$empleado->id]) }}"
                     method="POST" style="display: inline-back">
                     @method('delete')
                     @csrf
                    <input class="btn btn-danger" type="submit" value="delete">
                 </form>
+                
             </td>
           </tr>
           @endforeach

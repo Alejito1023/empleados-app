@@ -20,6 +20,8 @@
             <th scope="col">Code</th>
             <th scope="col">Departamentos</th>
             <th scope="col">Empleados</th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Numero Telefonico</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -28,7 +30,8 @@
           <tr>
             <th scope="row">{{ $departamento->id }}</th>
             <td>{{ $departamento->dep_nomb }}</td>
-            <td>{{ $departamento->emp_nomb }}</td>
+            <td>{{ $departamento->ubicacion }}</td>
+            <td>{{ $departamento->numero_telefonico }}</td>
             <td>
                 <a href=" {{ route("departamentos.edit" , ['departamento'=>$departamento->id]) }} " 
                     class=" btn btn-info"> Edit </a></li>

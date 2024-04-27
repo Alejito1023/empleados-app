@@ -29,6 +29,24 @@
              name="name" placeholder="departamento name.">
         </div>
 
+        <div class="mb-3">
+          <label for="dep_nomb" class="form-label">Nombre Departamento:</label>
+          <input type="text" required class="form-control" id="dep_nomb" aria-describedby="nameHelp"
+             name="dep_nomb" placeholder="dep_nomb name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="ubicacion" class="form-label">Ubicacion:</label>
+          <input type="text" required class="form-control" id="ubicacion" aria-describedby="nameHelp"
+             name="ubicacion" placeholder="ubicacion name.">
+        </div>
+
+        <div class="mb-3">
+          <label for="numero_telefonico" class="form-label">Numero telefonico:</label>
+          <input type="text" required class="form-control" id="numero_telefonico" aria-describedby="nameHelp"
+             name="numero_telefonico" placeholder="numero_telefonico name.">
+        </div>
+
         <label for="empleado">Empleado:</label>
         <select class="form-select"  id="empleado" name="code" required>
             <option selected disabled value="">Choose one...</option>
@@ -36,6 +54,7 @@
             <option value="{{$empleado->id}}">{{$empleado->emp_nomb}}</option>
             @endforeach
         </select>
+        
         <div class="mt-3">
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="{{ route('departamentos.index') }}" class="btn btn-warning">Cancel</a>

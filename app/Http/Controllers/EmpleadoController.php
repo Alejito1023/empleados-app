@@ -44,7 +44,11 @@ class EmpleadoController extends Controller
         // $empleado->comu_codi = $request->id;
         // El codigo de empleado es auto incremental
         $empleado->emp_nomb = $request->name;
+        $empleado->apellido = $request->apellido;
+        $empleado->posicion = $request->posicion;
         $empleado->departamento_id = $request->code;
+        $empleado->fecha_contratacion = $request->fecha_contratacion;
+        $empleado->salario = $request->salario;
         $empleado->save();
 
         $empleados = DB::table('empleados')
@@ -88,8 +92,12 @@ class EmpleadoController extends Controller
         $empleado = Empleado::find($id);
         // $empleado->comu_codi = $request->id;
         // El codigo de empleado es auto incremental
-        $empleado->nombre = $request->name;
+        $empleado->emp_nomb = $request->name;
+        $empleado->apellido = $request->apellido;
+        $empleado->posicion = $request->posicion;
         $empleado->departamento_id = $request->code;
+        $empleado->fecha_contratacion = $request->fecha_contratacion;
+        $empleado->salario = $request->salario;
         $empleado->save();
 
         $empleados = DB::table('empleados')
